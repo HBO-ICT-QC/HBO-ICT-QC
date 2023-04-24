@@ -1,12 +1,10 @@
-
+Websites: 
 - [Quantum Inspire Knowledge base](https://www.quantum-inspire.com/kbase)
 - [The School of Quantum](https://www.qutube.nl/)
 
 Youtube video's: 
 - (TED talk *A beginner's guide to quantum computing*)[https://www.youtube.com/watch?v=QuR969uMICM]
 - (Linus Tech Tips bezoekt DWAVE)[https://www.youtube.com/watch?v=60OkanvToFI]
-
-
 
 Providers van cloud quantum computing: 
 - QuTech (TU Delft/TNO): [Quantum Inspire](https://www.quantum-inspire.com/)

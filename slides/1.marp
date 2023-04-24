@@ -3,28 +3,51 @@ marp: true
 theme: uncover
 ---
 <!-- class: invert -->
-
+<style>
+section ul li[data-bespoke-marp-fragment=inactive] {
+    visibility: visible;
+    opacity: .1;
+}
+section ul li[data-bespoke-marp-fragment=active] ul li[data-bespoke-marp-fragment=active] {
+    visibility: visible;
+    opacity: 1;
+}
+section ul li[data-bespoke-marp-fragment=active] ul li[data-bespoke-marp-fragment=inactive] {
+    visibility: visible;
+    opacity: .1;
+}
+section ul li[data-bespoke-marp-fragment=inactive] ul li[data-bespoke-marp-fragment=inactive] {
+    visibility: visible;
+    opacity: 1;
+}
+</style>
 # Les 1
 
 ---
 
+## Word cloud
+
+We doen een wordcloud [hier](https://livecloud.online/nl/wordcloud)
+
+---
+
 ## Vandaag
-- 👨‍🏫 Wat zijn quantum computers?
-    - Hoe [zien ze eruit](https://www.volkskrant.nl/nieuws-achtergrond/mijlpaal-quantumcomputer-voor-het-eerst-de-snelste~b73cd5fb/)?
-    - [Wat is dat](https://i.stack.imgur.com/LEPbw.jpg)?
-- 🎯 Waar gaan we naartoe?
-- 🔍 In het diepe gegooid worden (play as a learning mechanism)
-- 🎲 Spelen met Quantum Inspire ➡️ geinspireerd worden
+* 👨‍🏫 Wat zijn quantum computers?
+    * Hoe [zien ze eruit](https://www.volkskrant.nl/nieuws-achtergrond/mijlpaal-quantumcomputer-voor-het-eerst-de-snelste~b73cd5fb/)?
+    * [Wat is dat](https://i.stack.imgur.com/LEPbw.jpg)?
+* 🎯 Waar gaan we naartoe?
+* 🔍 In het diepe gegooid worden (play as a learning mechanism)
+* 🎲 Spelen met Quantum Inspire en geinspireerd worden
 
 ---
 
 ## Overzicht bijeenkomsten
-- Les 1: 🤝 Introductie
-- 🏖️ Roostervrije week
-- Les 2: 🔢 Wiskunde/Natuurkunde (en gastles TNO)
-- Les 3: 📝 Quantum Computing
-- Les 4: 👨‍💻 Quantum Algoritmen
-- Les 5: 👩‍🏫 Project presentaties
+* Les 1: 🤝 Introductie
+* 🏖️ Roostervrije week
+* Les 2: 🔢 Wiskunde/Natuurkunde (en gastles TNO)
+* Les 3: 📝 Quantum Computing
+* Les 4: 👨‍💻 Quantum Algoritmen
+* Les 5: 👩‍🏫 Project presentaties
 
 ---
 
@@ -32,37 +55,43 @@ theme: uncover
 
 ---
 
+### Wet van Moore ten einde?
+[![Moore's wet in een animatie](https://img.youtube.com/vi/7uvUiq_jTLM/0.jpg)](https://www.youtube.com/watch?v=7uvUiq_jTLM "Moore's wet in een animatie")
+
+
+---
+
 ### Het is in het nieuws
-- [NRC](https://www.nrc.nl/search/#sorting_list=date&query=quantum%20computers)
-- [NOS](https://nos.nl/zoeken?q=quantum+computers)
-- [Tweakers](https://tweakers.net/zoeken/?keyword=quantum+computing)
+* [NRC](https://www.nrc.nl/search/#sorting_list=date&query=quantum%20computers)
+* [NOS](https://nos.nl/zoeken?q=quantum+computers)
+* [Tweakers](https://tweakers.net/zoeken/?keyword=quantum+computing)
 
 ---
 
 ### Hoge verwachtingen
-- Hype cycle van [Gartner](https://www.techrepublic.com/article/quantum-reality-check-gartner-expects-more-10-years-of-hype-but-cios-should-start-finding-use-cases-now/)
-- Quantum supremacy
-    - Efficiënt simuleren QC kan in [speciale gevallen](https://en.wikipedia.org/wiki/Gottesman%E2%80%93Knill_theorem)
-- Toepassingen
-    - Biochemie: medicijnen
-    - Materiaalkunde
-    - Optimalisatieproblemen: AI, Machine Learning, logistiek, banken, verkeersstromen
-    - Beveiliging: een probleem en een oplossing
-- Windows op een QC?
+* Hype cycle van [Gartner](https://www.techrepublic.com/article/quantum-reality-check-gartner-expects-more-10-years-of-hype-but-cios-should-start-finding-use-cases-now/)
+* Quantum supremacy
+    * Efficiënt simuleren QC kan in [speciale gevallen](https://en.wikipedia.org/wiki/Gottesman%E2%80%93Knill_theorem)
+* Toepassingen
+    * Biochemie: medicijnen
+    * Materiaalkunde
+    * Optimalisatieproblemen: AI, Machine Learning, logistiek, banken, verkeersstromen
+    * Beveiliging: een probleem en een oplossing
+* Windows op een QC?
 
 ---
 
 ### 💰 Groot geld
-- 🏢 Investeringen bedrijven (tot nu 35.5 miljard)
-    - Groot: Google, IBM, Amazon, Microsoft
-    - Startups: in [Nederland](https://quantumdelta.nl/)
-- 🌍 Financiering door landen: 
-    - 🇺🇸 US (1.9 miljard)
-    - 🇪🇺 EU (7.2 miljard voor 2025)
-    - 🇨🇳 China (15.3 miljard)
-    - ...
+* 🏢 Investeringen bedrijven (tot nu 35.5 miljard)
+    * Groot: Google, IBM, Amazon, Microsoft
+    * Startups: in [Nederland](https://quantumdelta.nl/)
+* 🌍 Financiering door landen: 
+    * 🇺🇸 US (1.9 miljard)
+    * 🇪🇺 EU (7.2 miljard voor 2025)
+    * 🇨🇳 China (15.3 miljard)
+    * ...
 
-- 👥 Enorme toename van benodigd personeel
+* 👥 Enorme toename van benodigd personeel
 
 ---
 
@@ -71,111 +100,157 @@ theme: uncover
 ---
 
 ### De natuur is raar
-- deeltje ⚛️ golf 🌊 dualisme
-- superpositie
-- verstrengeling
+* deeltje ⚛️ golf 🌊 dualisme
+* superpositie
+* verstrengeling
+
 
 ---
+
 ### Het woord *quantum*
-- Latijn "quantus" is "hoe veel"
-- Licht is *gekwantiseerd* in *fotons*
-    - heeft een *polarisatie* (3D bril)
-- Electronen-*spin* is gekwantiseerd
-- Energie-toestanden zijn gekwantiseerd
-    - electronen bevinden zich in orbitals
-    - lasers
+* Latijn "quantus" is "hoe veel"
+* Licht is *gekwantiseerd* in *fotons*
+    * heeft een *polarisatie* (3D bril)
+* Electronen-*spin* is gekwantiseerd
+* Energie-toestanden zijn gekwantiseerd
+    * electronen bevinden zich in orbitals
+    * lasers
 
 ---
 
 ### De qubit
-- “Quantum bit”
-- 0 of 1, of alles ertussenin
-- superpositie
-    - aanwezigheid / afwezigheid van een deeltje
-    - spin van een electron
-    - polarisatie van het licht
-- maar..., als je het meet, dan komt er of 0 of 1 uit
+* “Quantum bit”
+* 0 of 1, of alles ertussenin
+* superpositie
+    * aanwezigheid / afwezigheid van een deeltje
+    * spin van een electron
+    * polarisatie van het licht
+* maar..., als je het meet, dan komt er of 0 of 1 uit
 
 ---
 
 ### De meting
-- toestand vervalt/collapsed
-- 'Collapse of the wave function'
-- het double slit experiment: gelijktijdig deeltjes en golven?
-- Mach-Zehnder-interferometer
-- het [bom-experiment](https://en.wikipedia.org/wiki/Elitzur%E2%80%93Vaidman_bomb_tester)
-- de [onzekerheidsrelatie](https://nl.wikipedia.org/wiki/Onzekerheidsrelatie_van_Heisenberg) van Heisenberg (Breaking Bad)
-- een paradox: Schrödingers kat
+* Toestand vervalt/collapsed
+* 'Collapse of the wave function'
+* Het double slit experiment: gelijktijdig deeltjes en golven?
+* Mach-Zehnder-interferometer
+* Het [bom-experiment](https://en.wikipedia.org/wiki/Elitzur%E2%80%93Vaidman_bomb_tester)
+* De [onzekerheidsrelatie](https://nl.wikipedia.org/wiki/Onzekerheidsrelatie_van_Heisenberg) van Heisenberg (Breaking Bad)
+* Een paradox: Schrödingers kat
 
 ---
 
 ### Entanglement
-- Einstein: local realism
-- spooky action at a distance
-- EPR paradox
-- sneller dan het licht communicatie nogsteeds onmogelijk
+* Einstein: local realism
+* spooky action at a distance
+* EPR paradox
+* Sneller dan het licht communicatie nogsteeds onmogelijk
+* Bell's ongelijkheid experiment en de CHSH game
 
 ---
 
-### Bell's ongelijkheid experiment, CHSH game
-
-### double-slit
-
 ### De hardware
-Coherence-time
-#### Transmon qubit
-Superconducting qubits
-#### Ion traps
-#### Quantum dots
-- artificial atoms
-- qled
-#### Photons
-#### Topological qubits
+* Coherence-time
+* Transmon qubit
+* Superconducting qubits
+* Ion traps (Artificial atoms)
+* Quantum dots (QLED)
+* Photons
+* Topological qubits
 
 ---
 
 ### De verschillende subvakgebieden
-- quantum informatie
-- quantum communicatie
-- quantum encryptie
-- quantum algoritmen: zie de algorithm zoo
-- quantum hardware
-- quantum optica
-## Wat kunnen we met quantum?
-### Complexiteits-theorie
-Veel is nog onbekend
-- complexiteitsklassen
-### Toepassingen
-## Waarom doen we dit?
-### Motivatie
-- 😍 interesse
-- 🤓 voorbereid zijn op de toekomst
-- ❤️ willen bijdrage aan Quantum Inspire
-- 💰 kleine vergoeding achteraf
-- 🏆 certificaat deelname quantum computing lessen (🏗️ work in progress)
-- 🤝 medestudenten ontmoeten
+
+* quantum informatie
+* quantum communicatie
+* quantum encryptie
+* quantum algoritmen: zie de algorithm zoo
+* quantum hardware
+* quantum optica
 
 ---
 
-## Oefening
-- random number generator in Quantum Inspire
-- teleportatie in Quantum Inspire
-- optellen in Quantum Inspire
+## Wat kunnen we met quantum?
+
+---
+
+### Complexiteits-theorie
+
+* Complexiteitsklassen
+* Veel over BQP is nog onbekend
+
+---
+
+### Toepassingen
+<style scoped> * { font-size: .8rem; } </style>
+* Optimalisatieproblemen: real-time verbeteren verkeersstromen, goedkopere mileau-vriendlijkere routes scheepvaart, optimalisatie productieprocessen,  portfolio optimalisatie financiële instellingen
+* neurale netwerken: reinforcement learning, support vector machine implementaties, …
+* simuleren quantumprocessen en analyseren complexe molecuulstructuren voor materiaalkunde
+    * medicijnen afgestemd speciaal op jouw lichaam
+    * efficiënt ontwikkelen van kunstmest
+    * betere batterijen
+* overig: binnenvaartroutering, plaatsen WIFI access-punten, …
+
+---
+
+## Waarom doen we dit?
+
+---
+
+### Motivatie
+* 😍 interesse
+* 🤓 voorbereid zijn op de toekomst
+* ❤️ willen bijdrage aan Quantum Inspire
+* 💰 kleine vergoeding achteraf
+* 🏆 certificaat deelname QC lessen (🏗️ WIP)
+* 🤝 medestudenten ontmoeten
+
+---
+
+## 💪 Oefening
+* In tweetallen:
+    * 🎲 Random number generator in Quantum Inspire
+    * 🔁 Teleportatie in Quantum Inspire
+    * ➕ Optellen in Quantum Inspire
+* Wat willen we weten/kunnen? Interessant & nodig.
+    *  📝 Postits op het bord
+* Bedenk een quiz-vraag (onthoud het antwoord)
+    *  ❓ Voor op het bord
+
+---
+
+## Gezamelijke wrap-up
+* Wat hebben we geleerd?
+* Bekijken quiz-vragen
+* Wat staat ons te wachten?
+
+---
+
+## Hoe thuis verder?
+
+* voorbereiden op de wiskunde 
 
 ---
 
 ## Administratief
 
-- graag afmelden als je kunt komen
-- communicatie via Teams en Github
-    - inhoudelijke vragen in Teams of als Issue in Github
+* Graag afmelden als je niet kunt komen / stopt
+* Communicatie via Teams en Github
+    * Inhoudelijke vragen in Teams of als Issue in Github
+* Delen materiaal in `Bronnen.md`
 
 ---
+
 <!--  -->
 <!--
-backgroundColor: black
-text-shadow: 1px 1px 0 #000
+color: black
 -->
-## Dit doen we samen
+## Dit doen jullie samen
 
-![bg grayscale:1](https://cdn2.psychologytoday.com/assets/styles/manual_crop_1_91_1_1528x800/public/2020-08/shutterstock_1731284125_0.jpg?itok=89UrdUt_)
+![bg grayscale:1 blur:5px](https://cdn2.psychologytoday.com/assets/styles/manual_crop_1_91_1_1528x800/public/2020-08/shutterstock_1731284125_0.jpg?itok=89UrdUt_)
+
+* Vraag om hulp als het niet lukt
+* Help ook ongevraagd
+* Haal eruit wat je eruit wil halen
+* Community
