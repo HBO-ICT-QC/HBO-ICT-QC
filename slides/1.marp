@@ -1,9 +1,15 @@
+---
+theme: default
+---
+
 # Les 1
 ## Vandaag
 - wat zijn quantum computers?
 - waar gaan we naartoe?
 - in het diepe gegooid worden
 - spelen met Quantum Inspire -> geinspireerd worden
+
+---
 
 ## Waarom quantum?
 
@@ -12,11 +18,15 @@
 - [NOS](https://nos.nl/zoeken?q=quantum+computers)
 - [Tweakers](https://tweakers.net/zoeken/?keyword=quantum+computing)
 
+---
+
 ### Hoge verwachtingen
 - hype cycle van Gartner
 - toepassingen
 - QC met Windows?
 - enorme toename van benodigd personeel
+
+---
 
 ### Groot geld
 De grote bedrijven
@@ -29,6 +39,8 @@ Landen
 - China
 - ...
 
+---
+
 ## Wat is quantum?
 ### Het woord
 - Latijn "quantus" is "hoe veel"
@@ -39,6 +51,8 @@ Landen
     - electronen bevinden zich in orbitals
     - lasers
 
+---
+
 ### De qubit
 - Quantum bit -> qubit
 - 0 of 1, of alles ertussenin
@@ -47,6 +61,8 @@ Landen
     - spin van een electron
     - polarisatie van het licht
 - maar..., als je het meet, dan komt er of 0 of 1 uit
+
+---
 
 ### De meting
 - toestand vervalt/collapsed
@@ -57,11 +73,15 @@ Landen
 - de [onzekerheidsrelatie](https://nl.wikipedia.org/wiki/Onzekerheidsrelatie_van_Heisenberg) van Heisenberg (Breaking Bad)
 - een paradox: Schrödingers kat
 
+---
+
 ### Entanglement
 - Einstein: local realism
 - spooky action at a distance
 - EPR paradox
 - sneller dan het licht communicatie nogsteeds onmogelijk
+
+---
 
 ### Bell's ongelijkheid experiment, CHSH game
 
