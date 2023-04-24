@@ -5,16 +5,95 @@
 - in het diepe gegooid worden
 - spelen met Quantum Inspire -> geinspireerd worden
 
-## Quantum computers in het nieuws
+## Waarom quantum?
+
+### Het is in het nieuws
 - [NRC](https://www.nrc.nl/search/#sorting_list=date&query=quantum%20computers)
 - [NOS](https://nos.nl/zoeken?q=quantum+computers)
 - [Tweakers](https://tweakers.net/zoeken/?keyword=quantum+computing)
 
-## Verwachtingen
+### Hoge verwachtingen
+- hype cycle van Gartner
+- toepassingen
+- QC met Windows?
 - enorme toename van benodigd personeel
 
-## De grote bedrijven
+### Groot geld
+De grote bedrijven
+- Google
+- IBM
+- Amazon
 
+Landen
+- EU
+- China
+- ...
+
+## Wat is quantum?
+### Het woord
+- Latijn "quantus" is "hoe veel"
+- licht is gekwantiseerd in fotons
+    - heeft een polarisatie (3D films)
+- electronen-spin is gekwantiseerd
+- energie-toestanden zijn gekwantiseerd
+    - electronen bevinden zich in orbitals
+    - lasers
+
+### De qubit
+- Quantum bit -> qubit
+- 0 of 1, of alles ertussenin
+- superpositie
+    - aanwezigheid / afwezigheid van een deeltje
+    - spin van een electron
+    - polarisatie van het licht
+- maar..., als je het meet, dan komt er of 0 of 1 uit
+
+### De meting
+- toestand vervalt/collapsed
+- 'Collapse of the wave function'
+- het double slit experiment: gelijktijdig deeltjes en golven?
+- Mach-Zehnder-interferometer
+- het [bom-experiment](https://en.wikipedia.org/wiki/Elitzur%E2%80%93Vaidman_bomb_tester)
+- de [onzekerheidsrelatie](https://nl.wikipedia.org/wiki/Onzekerheidsrelatie_van_Heisenberg) van Heisenberg (Breaking Bad)
+- een paradox: Schrödingers kat
+
+### Entanglement
+- Einstein: local realism
+- spooky action at a distance
+- EPR paradox
+- sneller dan het licht communicatie nogsteeds onmogelijk
+
+### Bell's ongelijkheid experiment, CHSH game
+
+### double-slit
+
+### De hardware
+Coherence-time
+#### Transmon qubit
+Superconducting qubits
+#### Ion traps
+#### Quantum dots
+- artificial atoms
+- qled
+#### Photons
+#### Topological qubits
+## De verschillende subvakgebieden
+- quantum informatie
+- quantum communicatie
+- quantum encryptie
+- quantum algoritmen: zie de algorithm zoo
+- quantum hardware
+- quantum optica
+## Wat kunnen we met kwantum?
+### Complexiteits-theorie
+Veel is nog onbekend
+- complexiteitsklassen
+### Toepassingen
+
+## Oefening
+- random number generator in Quantum Inspire
+- teleportatie in Quantum Inspire
+- optellen in Quantum Inspire
 
 <!-- 
 <button id="nextSlide" style="position:fixed;bottom:10px;left:10px">&gt;</button>
