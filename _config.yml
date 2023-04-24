@@ -1,5 +1,5 @@
 title: HBO-ICT Quantum computing
 description: Quantum computing voor HBO-ICT studenten, door HBO-ICT studenten
-show_downloads: true
+show_downloads: false
 theme: jekyll-theme-cayman
 markdown: kramdown
