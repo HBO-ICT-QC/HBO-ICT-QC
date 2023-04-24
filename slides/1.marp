@@ -7,24 +7,22 @@ theme: default
 ---
 
 ## Vandaag
-- wat zijn quantum computers?
-- waar gaan we naartoe?
-- in het diepe gegooid worden
-- spelen met Quantum Inspire -> geinspireerd worden
+- Wat zijn quantum computers?
+    - Hoe [zien ze eruit](https://www.volkskrant.nl/nieuws-achtergrond/mijlpaal-quantumcomputer-voor-het-eerst-de-snelste~b73cd5fb/)?
+    - [Wat is dat](https://i.stack.imgur.com/LEPbw.jpg)?
+- Waar gaan we naartoe?
+- In het diepe gegooid worden (play as a learning mechanism)
+- Spelen met Quantum Inspire -> geinspireerd worden
 
 ---
 
 ## Overzicht bijeenkomsten
-- Les 1: Introductie
+- Les 1: 🤝 Introductie
 - Roostervrije week
-- Les 2: Wiskunde/Natuurkunde (en gastles TNO)
-- Les 3: Quantum Computing
-- Les 4: Quantum Algoritmen
-- Les 5: Project presentaties
-
----
-
-{:toc}
+- Les 2: 🔢 Wiskunde/Natuurkunde (en gastles TNO)
+- Les 3: 📝 Quantum Computing
+- Les 4: 👨‍💻 Quantum Algoritmen
+- Les 5: 👩‍🏫 Project presentaties
 
 ---
 
@@ -39,6 +37,7 @@ theme: default
 
 ### Hoge verwachtingen
 - hype cycle van Gartner
+- quantum supremacy
 - toepassingen
 - QC met Windows?
 - enorme toename van benodigd personeel
@@ -57,7 +56,6 @@ Landen
 - ...
 
 ---
-
 ## Wat is quantum?
 ### Het woord
 - Latijn "quantus" is "hoe veel"
@@ -114,36 +112,31 @@ Superconducting qubits
 - qled
 #### Photons
 #### Topological qubits
-## De verschillende subvakgebieden
+
+---
+
+### De verschillende subvakgebieden
 - quantum informatie
 - quantum communicatie
 - quantum encryptie
 - quantum algoritmen: zie de algorithm zoo
 - quantum hardware
 - quantum optica
-## Wat kunnen we met kwantum?
+## Wat kunnen we met quantum?
 ### Complexiteits-theorie
 Veel is nog onbekend
 - complexiteitsklassen
 ### Toepassingen
+## Waarom doen we dit?
+### Motivatie
+- 😍 interesse
+- 🤓 voorbereid zijn op de toekomst
+- ❤️ willen bijdrage aan Quantum Inspire
+- 💰 kleine vergoeding achteraf
+- 🏆 certificaat deelname quantum computing lessen (🏗️ work in progress)
+- 🤝 medestudenten ontmoeten
 
 ## Oefening
 - random number generator in Quantum Inspire
 - teleportatie in Quantum Inspire
 - optellen in Quantum Inspire
-
-<!-- 
-<button id="nextSlide" style="position:fixed;bottom:10px;left:10px">&gt;</button>
-<script>
-var pages = document.getElementsByTagName('h2');
-for (i = 0; i < pages.length; i += 1)
-   pages[i].style.marginTop = window.innerHeight + "px";
-document.getElementById('nextSlide').onclick = () => {
-    for (i = 0; i <= pages.length; i+=1)
-   	    if (i == pages.length || pages[i].getBoundingClientRect().top >= -4) {
-            pages[i + 1].scrollIntoView({behavior: "smooth"});
-            break;
-        }
-}
-</script>
--->
