@@ -9,10 +9,16 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Marp Build (README)
+      - name: Marp Build 1
         uses: docker://marpteam/marp-cli:v1.7.0
         with:
           args: slides/1.marp -o slides/1.html
+        env:
+          MARP_USER: root:root
+      - name: Marp Build 2
+        uses: docker://marpteam/marp-cli:v1.7.0
+        with:
+          args: slides/2.marp -o slides/2.html
         env:
           MARP_USER: root:root
       - uses: stefanzweifel/git-auto-commit-action@v4
