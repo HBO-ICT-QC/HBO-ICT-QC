@@ -1,0 +1,21 @@
+version 1.0
+
+qubits 6
+
+
+X q[0]
+cnot q[0],q[3]
+cnot q[1],q[3]
+cnot q[2],q[3]
+
+Toffoli q[0],q[1],q[4]
+Toffoli q[0],q[2],q[4]
+
+measure q[3]
+
+Toffoli q[1],q[2],q[4]
+
+measure q[4]
+
+# Author: Laurens Frensen
+# Student number: 22106189
