@@ -1,0 +1,368 @@
+---
+marp: true
+theme: uncover
+style: |
+  .columns {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: center;
+    gap: 1rem;
+  }
+math: mathjax
+---
+<!-- class: invert -->
+<style>
+section ul li[data-bespoke-marp-fragment=inactive] {
+    visibility: visible;
+    opacity: .1;
+}
+section ul li[data-bespoke-marp-fragment=active] ul li[data-bespoke-marp-fragment=active] {
+    visibility: visible;
+    opacity: 1;
+}
+section ul li[data-bespoke-marp-fragment=active] ul li[data-bespoke-marp-fragment=inactive] {
+    visibility: visible;
+    opacity: .1;
+}
+section ul li[data-bespoke-marp-fragment=inactive] ul li[data-bespoke-marp-fragment=inactive] {
+    visibility: visible;
+    opacity: 1;
+}
+</style>
+# Les 3
+
+---
+
+## Vandaag
+* 🔁 Herhaling quantum key distribution
+* 🔁 Herhaling wiskunde
+* 🔁 Herhaling quantum circuits
+* 🔁 Herhaling Grover's algoritme
+* 👨‍💻 Grover's algoritme in Quantum Inspire
+
+---
+
+## Overzicht bijeenkomsten
+* ~~Les 1: 🤝 Introductie~~
+* ~~🏖️ Roostervrije week~~
+* ~~Les 2: 🔢 Wiskunde/Natuurkunde (en gastles TNO)~~
+* Les 3: 📝 Quantum Computing
+* Les 4: 👨‍💻 Quantum Algoritmen
+* Les 5: 👩‍🏫 Project presentaties
+
+---
+
+## Vandaag
+
+* 🔒 Quantum key distribution
+* 🔢 Wiskundig formalisme
+* 📋 Quantum circuits
+* 🔍 Grover
+* 👨‍💻 Oefening
+* 👥 Gezamelijke wrap-up
+
+---
+
+## Wiskundig formalisme
+
+* Waarom?
+    * Nodig om filmpjes/literatuur/documentatie over quantum computing te begrijpen
+    * Inzicht: vectors geven superpositie en tensorproducten geven verstrengeling
+* Zo min mogelijk
+
+---
+
+### Syntax
+
+| 🔢 Matrix notatie     | 👙 Bra-ket notatie |
+|----------|-----|
+| Vector: $\begin{bmatrix}a\\c\end{bmatrix}$     | Bra: $\bra{0}$  |
+| Matrix: $\begin{bmatrix}a&b\\c&d\end{bmatrix}$     | Ket: $\ket{0}$  |
+
+- State/toestand typisch $\ket\phi$ of $\ket\psi$. 
+- Operator typisch hoofdletters: $A$, $B$, etc. 
+- Coëfficiënten typisch Grieks of klein: $\alpha$, $a$, $\beta$, $b$ etc. 
+
+---
+
+### Vectors
+
+* $\begin{bmatrix}a\\b\end{bmatrix}=a\begin{bmatrix}1\\0\end{bmatrix}+b\begin{bmatrix}0\\1\end{bmatrix}$, dus
+    * met kans $a^2$ nul, en 
+    * met kans $b^2$ één
+* Superpositie als $a\neq 0$ en $b\neq 0$. 
+* Elke toestand is te omschrijven zo. 
+* Er zijn andere <em>bases</em> mogelijk... (later meer)
+* Hoe rekenen we met vectors?
+
+---
+
+### Complexe getallen
+Alles wat je moet weten:
+* definitie $i^2=-1$
+* absolute waarde: $|i|=1$
+* je kunt er gewoon mee rekenen
+
+---
+
+### Bloch sphere
+
+![width:12em](Bloch_sphere.svg)
+
+---
+
+### Matrices
+
+![bg](matrix.jpg)
+
+---
+
+#### Een matrix als een functie
+
+<div class="columns"><div style="text-align: right;">
+
+$\begin{bmatrix}1\\2\end{bmatrix}$
+
+</div><div>
+
+![width:7em](./function.svg)
+
+</div><div style="text-align: left;">
+
+$\begin{bmatrix}1\\0\end{bmatrix}$
+
+</div></div>
+
+---
+
+#### Lineariteit van matrices
+<style scoped>
+img {
+  vertical-align: middle;
+}
+</style>
+
+* Schrijf voortaan $\left[\begin{smallmatrix}a\\b\end{smallmatrix}\right]$ ![width:2em](./function.svg) $\left[\begin{smallmatrix}c\\d\end{smallmatrix}\right]$, op als $A\left[\begin{smallmatrix}a\\b\end{smallmatrix}\right]=\left[\begin{smallmatrix}c\\d\end{smallmatrix}\right]$
+* Bekijk de uitvoer van <em>basisvectoren</em>: 
+    * $A\left[\begin{smallmatrix}1\\0\end{smallmatrix}\right]=\left[\begin{smallmatrix}-1\\2\end{smallmatrix}\right]$
+    * $A\left[\begin{smallmatrix}0\\1\end{smallmatrix}\right]=\left[\begin{smallmatrix}1\\-1\end{smallmatrix}\right]$
+* <em>Lineariteit</em> geeft: 
+    * $A\left[\begin{smallmatrix}1\\2\end{smallmatrix}\right]=A(\left[\begin{smallmatrix}1\\0\end{smallmatrix}\right]+2\left[\begin{smallmatrix}0\\1\end{smallmatrix}\right])=A\left[\begin{smallmatrix}1\\0\end{smallmatrix}\right]+2A\left[\begin{smallmatrix}0\\1\end{smallmatrix}\right]=\left[\begin{smallmatrix}-1\\2\end{smallmatrix}\right]+2\left[\begin{smallmatrix}1\\-1\end{smallmatrix}\right]$ $=\left[\begin{smallmatrix}1\\-1\end{smallmatrix}\right]$. 
+
+---
+
+#### Regels
+
+* $\star$ Toestanden hebben norm 1
+* Matrices: 
+    * moeten $\star$ bewaren, dus zijn <em>unitair</em>, oftewel zijn rotaties, dus
+    * zijn inverteerbaar
+        * in de quantum computing heet dat <em>reversibel</em>
+        * hier volgt de <em>no cloning theorem</em> uit
+
+---
+
+#### Rekenen met matrices
+
+* Optellen/aftrekken $A\pm B$
+* Vermenigvuldigen
+    * Matrix keer matrix $AB$
+        * Matrix inverse $A^{-1}$ (moeilijk, niet proberen)
+    * Getal keer matrix $\alpha B$
+* Tensorvermenigvuldigen $A\otimes B$, straks...
+
+---
+
+### Tensors
+
+<!-- geen tensorflow -->
+* voor verstrengeling hebben we meer qubits nodig
+* we bekijken de gezamelijke toestandruimte
+* in vectors: 
+$\left[\begin{smallmatrix}a\\b\end{smallmatrix}\right]\otimes\left[\begin{smallmatrix}c\\d\end{smallmatrix}\right]=\left[\begin{smallmatrix}ac\\bc\\ad\\bd\end{smallmatrix}\right]$
+* in kets: 
+$$(a\ket{0}+b\ket{1})\otimes(c\ket{0}+d\ket{1})=ac\ket{00}+bc\ket{10}+ad\ket{01}+bd\ket{11}$$
+* Niet alle $\cdots\ket{00}+\cdots\ket{10}+\cdots\ket{01}+\cdots\ket{11}$ kunnen we omschrijven in $\cdots\otimes\cdots$ en dat is verstrengeling!
+* $\otimes$ bestaat ook voor matrices (bekijk CNOT)
+
+---
+
+### Bras
+
+* Kets zijn simpel, bras zijn moeilijker
+* $\bra{1}=[\begin{smallmatrix}0&1\end{smallmatrix}]$
+* Nóg een product: het inwendig product
+* $\ket{1}\bra{1}$ is een matrix, en $\bra{1}\ket{1}$ is een getal
+
+---
+
+### 🏋️ Oefenen
+
+* Wat is $HH$?
+* Wat is $H\ket{+}$ en wat is $H\ket{-}$?
+* Waarom kan een gate geen lege kolom hebben?
+* Is entanglement mogelijk zonder twee-qubit gate?
+* Wat is de CNOT van $\ket{0}$ en $\ket{+}$?
+* Waarom heet de CPHASE zo?
+* Wat is $H\otimes I$? Hier is $I$ de operator die niets doet. 
+* Vragen over wiskunde in de slides van vorige week?
+
+---
+
+## Vandaag
+
+* ~~🔒 Quantum key distribution~~
+* ~~🔢 Wiskundig formalisme~~
+* 📋 Quantum circuits
+* 🔍 Grover
+* 👨‍💻 Oefening
+* 👥 Gezamelijke wrap-up
+
+---
+
+## Circuits
+
+---
+
+### 🏛️ Klassieke circuits
+
+![](./gates2.png)
+
+* Bits worden gekopieerd op de T-splitsingen
+* Binaire operaties hebben één uitvoer
+* Unaire operaties bestaan ook
+* [Overzicht van operaties](https://commons.wikimedia.org/wiki/Logic_gates_unified_symbols)
+* Binair optellen in de CPU: [voorbeeld](http://cpuville.com/Educational/AND-OR-array-logic.html)
+
+---
+
+### Quantum circuit: voorbeeld
+
+
+![](./CircuitExample.png)
+
+---
+
+### Drie-qubit gate: Toffoli
+
+![width:5em](./tofolli.png)
+
+* ❗ Dit heeft niets te maken met [qutrits](https://en.wikipedia.org/wiki/Qutrit)!
+
+---
+
+### Ancilla qubits
+
+![width:10em](./cccccnot.png)
+
+* 'Helper' qubits, want alles moet reversibel
+
+---
+
+### 🏋️ Oefenen
+
+* 🔁 Herhaling: is het teleportatie circuit duidelijk?
+* Kan je met alleen CNOTS een SWAP maken?
+* Als er een qubit bij komt in een circuit, hoeveel groter worden de matrices?
+* Maak een circuit die meet of een qubit paar $\ket{00}+\ket{11}$ is, of $\ket{01}+\ket{10}$. 
+* Gebruik de CNOT om de CPHASE te maken. 
+
+---
+
+## Vandaag
+
+* ~~🔒 Quantum key distribution~~
+* ~~🔢 Wiskundig formalisme~~
+* ~~📋 Quantum circuits~~
+* 🔍 Grover
+* 👨‍💻 Oefening
+* 👥 Gezamelijke wrap-up
+
+---
+
+## Grover's algoritme
+
+![width:5em](./pngwing.com.png)
+
+---
+
+### 🔍 Zoeken
+
+* Hoe snel kan dat klassiek? $\mathcal{O}(n)$
+    * <pre><code>for (int i=0;i<n;i++) if (succes(a[i])) { found(); break; }</code></pre>
+* Quantum kunnen we veel parallel doen. 
+
+![](./groveralgowhite.png)
+
+---
+
+### Stap voor stap
+
+Dit is een belangrijke overview: 
+
+* Eerst een mega-superpositie met Hadamards
+* Dan een aantal ($\approx\sqrt{N}$) iteraties:
+    * het orakel
+    * een diffusion operator
+* Aan het eind meten
+
+---
+
+### Het orakel 🔮
+
+* Fancy naam voor de <code>found()</code> methode
+* Een black-box (zoeken we bijv. naar Sudoku's?)
+* Reversibel? Twee mogelijke implementaties: 
+    * Antwoord XOR'en met een hulp qubit
+    * Antwoord in de phase $\pm$
+
+---
+
+### Reflecteren langs het gemiddelde
+
+Op het white-board 👨‍🏫
+
+---
+
+## Vandaag
+
+* ~~🔒 Quantum key distribution~~
+* ~~🔢 Wiskundig formalisme~~
+* ~~📋 Quantum circuits~~
+* ~~🔍 Grover~~
+* 👨‍💻 Oefening
+* 👥 Gezamelijke wrap-up
+
+---
+
+## 🏋️ Oefening
+* Alleen of in tweetallen:
+    * ❓ Bedenk een interessante vraag m.b.t. vandaag. 
+    * 📝 Implementeer Grover's algoritme in Quantum Inspire. Meer uitleg: [Qiskit's uitleg over Grover](https://learn.qiskit.org/course/ch-algorithms/grovers-algorithm)
+* Voor thuis: 
+    * 🖥️ Programmeeropdracht: maak je eigen een quantum computer simulator
+    * 👥 Maak groepjes 
+* Feedback les vorige week
+    *  ❓ Andere feedback ook welkom!
+
+---
+
+## Gezamelijke wrap-up
+* Wat hebben we geleerd?
+* Vragen bespreken
+* Wat staat ons te wachten?
+
+---
+
+<!--  -->
+<!--
+color: black
+-->
+### Dit doen jullie samen
+
+![bg grayscale:1 blur:5px](https://cdn2.psychologytoday.com/assets/styles/manual_crop_1_91_1_1528x800/public/2020-08/shutterstock_1731284125_0.jpg?itok=89UrdUt_)
+
+* Vraag om hulp als het niet lukt
+* Help ook ongevraagd
+* Haal eruit wat je eruit wil halen
+* Community
