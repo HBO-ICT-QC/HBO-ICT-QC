@@ -74,10 +74,10 @@ section ul li[data-bespoke-marp-fragment=inactive] ul li[data-bespoke-marp-fragm
 
 ### Syntax
 
-| 🔢 Matrix notatie                              | 👙 Bra-ket notatie |
-|------------------------------------------------|--------------------|
-| Vector: $\begin{bmatrix}a\\c\end{bmatrix}$     | Bra: $\bra{0}$     |
-| Matrix: $\begin{bmatrix}a&b\\c&d\end{bmatrix}$ | Ket: $\ket{0}$     |
+| 🔢 Matrix notatie                              | 👙 Bra-ket notatie        |
+|------------------------------------------------|---------------------------|
+| Vector: $\begin{bmatrix}a\\c\end{bmatrix}$     | Ket: $\ket{0}$            |
+| Matrix: $\begin{bmatrix}a&b\\c&d\end{bmatrix}$ | Ket-Bra: $\ket{0}\bra{0}$ |
 
 * State/toestand typisch $\ket\phi$ of $\ket\psi$. 
 * Operator typisch hoofdletters: $A$, $B$, etc. 
@@ -92,7 +92,7 @@ section ul li[data-bespoke-marp-fragment=inactive] ul li[data-bespoke-marp-fragm
     * met kans $|b|^2$ één
 * Superpositie als $a\neq 0$ en $b\neq 0$. 
 * Elke toestand is te omschrijven zo. 
-* Er zijn andere <em>bases</em> mogelijk... (later meer)
+* Er zijn andere *bases* mogelijk... (later meer)
 * Hoe rekenen we met vectors?
 
 ---
@@ -143,11 +143,11 @@ img {
 </style>
 
 * Schrijf voortaan $\left[\begin{smallmatrix}a\\b\end{smallmatrix}\right]$ ![width:2em](./function.svg) $\left[\begin{smallmatrix}c\\d\end{smallmatrix}\right]$, op als $A\left[\begin{smallmatrix}a\\b\end{smallmatrix}\right]=\left[\begin{smallmatrix}c\\d\end{smallmatrix}\right]$
-* Bekijk de uitvoer van <em>basisvectoren</em>: 
+* Bekijk de uitvoer van *basisvectoren*: 
     * $A\left[\begin{smallmatrix}1\\0\end{smallmatrix}\right]=\left[\begin{smallmatrix}-1\\2\end{smallmatrix}\right]$
     * $A\left[\begin{smallmatrix}0\\1\end{smallmatrix}\right]=\left[\begin{smallmatrix}1\\-1\end{smallmatrix}\right]$
-* <em>Lineariteit</em> geeft: 
-    * $A\left[\begin{smallmatrix}1\\2\end{smallmatrix}\right]=A(\left[\begin{smallmatrix}1\\0\end{smallmatrix}\right]+2\left[\begin{smallmatrix}0\\1\end{smallmatrix}\right])=A\left[\begin{smallmatrix}1\\0\end{smallmatrix}\right]+2A\left[\begin{smallmatrix}0\\1\end{smallmatrix}\right]=\left[\begin{smallmatrix}-1\\2\end{smallmatrix}\right]+2\left[\begin{smallmatrix}1\\-1\end{smallmatrix}\right]$ $=\left[\begin{smallmatrix}1\\-1\end{smallmatrix}\right]$. 
+* *Lineariteit* geeft: 
+    * $A\left[\begin{smallmatrix}1\\2\end{smallmatrix}\right]=A(\left[\begin{smallmatrix}1\\0\end{smallmatrix}\right]+2\left[\begin{smallmatrix}0\\1\end{smallmatrix}\right])=A\left[\begin{smallmatrix}1\\0\end{smallmatrix}\right]+2A\left[\begin{smallmatrix}0\\1\end{smallmatrix}\right]=\left[\begin{smallmatrix}-1\\2\end{smallmatrix}\right]+2\left[\begin{smallmatrix}1\\-1\end{smallmatrix}\right]$ $=\left[\begin{smallmatrix}1\\0\end{smallmatrix}\right]$. 
 
 ---
 
@@ -155,10 +155,10 @@ img {
 
 * $\star$ Toestanden hebben norm 1
 * Matrices: 
-    * moeten $\star$ bewaren, dus zijn <em>unitair</em>, oftewel zijn rotaties, dus
+    * moeten $\star$ bewaren, dus zijn *unitair*, oftewel zijn rotaties, dus
     * zijn inverteerbaar. 
-        * In de quantum computing heet dat <em>reversibel</em>. 
-        * Hier volgt de <em>no cloning theorem</em> uit. 
+        * In de quantum computing heet dat *reversibel*. 
+        * Hier volgt de *no cloning theorem* uit. 
 
 ---
 
@@ -181,8 +181,8 @@ img {
 * in vectors: 
 $\left[\begin{smallmatrix}a\\b\end{smallmatrix}\right]\otimes\left[\begin{smallmatrix}c\\d\end{smallmatrix}\right]=\left[\begin{smallmatrix}ac\\bc\\ad\\bd\end{smallmatrix}\right]$
 * in kets: 
-$$(a\ket{0}+b\ket{1})\otimes(c\ket{0}+d\ket{1})=ac\ket{00}+bc\ket{10}+ad\ket{01}+bd\ket{11}$$
-* Niet alle $\cdots\ket{00}+\cdots\ket{10}+\cdots\ket{01}+\cdots\ket{11}$ kunnen we omschrijven in $\cdots\otimes\cdots$ en dat is verstrengeling!
+$$(a\ket{0}+b\ket{1})\otimes(c\ket{0}+d\ket{1})=ac\ket{00}+bc\ket{01}+ad\ket{10}+bd\ket{11}$$
+* Niet alle $\cdots\ket{00}+\cdots\ket{01}+\cdots\ket{10}+\cdots\ket{11}$ kunnen we omschrijven in $\cdots\otimes\cdots$ en dat is verstrengeling!
 * $\otimes$ bestaat ook voor matrices (bekijk CNOT)
 
 ---
@@ -241,12 +241,12 @@ $$(a\ket{0}+b\ket{1})\otimes(c\ket{0}+d\ket{1})=ac\ket{00}+bc\ket{10}+ad\ket{01}
 
 * Quantum, twee bases: 
 
-| Meet   | ↙️↗️   | ↙️↗️   | ↙️↗️      | ↙️↗️      | ↙️↗️           | ⬆️⬇️   | ⬆️⬇️   | ⬆️⬇️   | ⬆️⬇️   |
-|----------------|------|------|---------|---------|------|------|------|------|------|
-| Begin | ↗️    | ↙️    | ⬆️       | ⬇️       | ↙️             | ↗️    | ↙️    | ⬆️    | ⬇️    |
-| Eind  | ↗️    | ↙️    | ↙️❓↗️  | ↙️❓↗️  | ↙️                     | ⬆️❓⬇️   | ⬆️❓⬇️   | ⬆️    | ⬇️    |
+| Meet  | ↙️↗️   | ↙️↗️   | ↙️↗️    | ↙️↗️    |  ⬆️⬇️  | ⬆️⬇️  | ⬆️⬇️ | ⬆️⬇️ |
+|-------|------|------|-------|-------|-------|-------|------|------|
+| Begin | ↗️    | ↙️    | ⬆️     | ⬇️     | ↗️    | ↙️    | ⬆️   | ⬇️   |
+| Eind  | ↗️    | ↙️    | ↙️❓↗️   | ↙️❓↗️   | ⬆️❓⬇️ | ⬆️❓⬇️ | ⬆️   | ⬇️   |
 
-* Klassiek, een slim <em>protocol</em>.
+* Klassiek, een slim *protocol*.
 
 ---
 
@@ -269,12 +269,12 @@ $$(a\ket{0}+b\ket{1})\otimes(c\ket{0}+d\ket{1})=ac\ket{00}+bc\ket{10}+ad\ket{01}
 * 🔒 meet verstrengelde qubits in willekeurige bases
 * 🔓 vertel bases klassiek: gelijke bases moeten dezelfde meetresultaten geven
 
-| 👧      | 👧  || 👦      | 👦
-|----------|--------|-|----------|--------
-| basis    | meting || meting    | basis
-| ↙️↗️       | ↗️      || ⬇️        | ⬆️⬇️      
-| ⬆️⬇️       | ⬇️      || ⬇️       | ⬆️⬇️      
-| ↙️↗️       | ↙️      || ↙️       | ↙️↗️      
+| 👧    | 👧     |   | 👦     | 👦    |
+|-------|--------|---|--------|-------|
+| basis | meting |   | meting | basis |
+| ↙️↗️  | ↗️     |   | ⬇️     | ⬆️⬇️  |
+| ⬆️⬇️  | ⬇️     |   | ⬇️     | ⬆️⬇️  |
+| ↙️↗️  | ↙️     |   | ↙️     | ↙️↗️  |
 
 
 ---
@@ -293,7 +293,7 @@ $$(a\ket{0}+b\ket{1})\otimes(c\ket{0}+d\ket{1})=ac\ket{00}+bc\ket{10}+ad\ket{01}
 * Wat gebeurt er als 🕵️ afluistert?
 * Maakt de volgorde waarin 👧 en 👦 meten uit?
 * Met welke kans wordt 🕵️ betrapt?
-* De toestand $\ket{0}-\ket{1}$ wordt gemeten in de +i/-i basis. Wat zijn de kansen?
+* De toestand $\ket{0}-\ket{1}$ wordt gemeten in de $\ket{+i}$/$\ket{-i}$ basis. Wat zijn de kansen?
 
 ---
 
@@ -376,10 +376,16 @@ $$(a\ket{0}+b\ket{1})\otimes(c\ket{0}+d\ket{1})=ac\ket{00}+bc\ket{10}+ad\ket{01}
 
 ### 🔍 Zoeken
 
+<style scoped>
+    code {
+        font-size: 70%;
+    }
+</style>
+
 ![](./groveralgowhite.png)
 
 * Hoe snel kan dat klassiek? $\mathcal{O}(n)$
-    * <pre><code>for (int i=0;i<n;i++) if (succes(a[i])) { found(); break; }</code></pre>
+    * `for (int i=0;i<n;i++) if (succes(a[i])) { found(); break; }`
 * Quantum kunnen we veel parallel doen. 
 
 ---
@@ -398,7 +404,7 @@ Dit is een belangrijke overview:
 
 ### Het orakel 🔮
 
-* Fancy naam voor de <code>found()</code> methode
+* Fancy naam voor de `success()` methode
 * Een black-box (zoeken we bijv. naar Sudoku's?)
 * Reversibel? Twee mogelijke implementaties: 
     * Antwoord XOR'en met een hulp qubit
@@ -442,7 +448,6 @@ Op het white-board 👨‍🏫
 
 ---
 
-<!--  -->
 <!--
 color: black
 -->
