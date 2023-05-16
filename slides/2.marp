@@ -376,11 +376,11 @@ $$(a\ket{0}+b\ket{1})\otimes(c\ket{0}+d\ket{1})=ac\ket{00}+bc\ket{10}+ad\ket{01}
 
 ### 🔍 Zoeken
 
+![](./groveralgowhite.png)
+
 * Hoe snel kan dat klassiek? $\mathcal{O}(n)$
     * <pre><code>for (int i=0;i<n;i++) if (succes(a[i])) { found(); break; }</code></pre>
 * Quantum kunnen we veel parallel doen. 
-
-![](./groveralgowhite.png)
 
 ---
 
