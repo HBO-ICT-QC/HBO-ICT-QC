@@ -33,12 +33,12 @@ section ul li[data-bespoke-marp-fragment=inactive] ul li[data-bespoke-marp-fragm
 
 ---
 
-## Vandaag
+## Vandaag: 🔁 herhaling
 * 🔁 Herhaling quantum key distribution
 * 🔁 Herhaling wiskunde
 * 🔁 Herhaling quantum circuits
 * 🔁 Herhaling Grover's algoritme
-* 👨‍💻 Grover's algoritme in Quantum Inspire
+* 🏋️ Grover's algoritme in Quantum Inspire
 
 ---
 
@@ -54,11 +54,11 @@ section ul li[data-bespoke-marp-fragment=inactive] ul li[data-bespoke-marp-fragm
 
 ## Vandaag
 
-* 🔒 Quantum key distribution
 * 🔢 Wiskundig formalisme
-* 📋 Quantum circuits
+* 🔒 Quantum key distribution
+* ⏛ Quantum circuits
 * 🔍 Grover
-* 👨‍💻 Oefening
+* 🏋️ Oefening
 * 👥 Gezamelijke wrap-up
 
 ---
@@ -66,18 +66,18 @@ section ul li[data-bespoke-marp-fragment=inactive] ul li[data-bespoke-marp-fragm
 ## Wiskundig formalisme
 
 * Waarom?
-    * Nodig om filmpjes/literatuur/documentatie over quantum computing te begrijpen
-    * Inzicht: vectors geven superpositie en tensorproducten geven verstrengeling
+    * 🗣️ Nodig om filmpjes/literatuur/documentatie over quantum computing te begrijpen
+    * 🧠 Inzicht: vectors geven superpositie en tensorproducten geven verstrengeling
 * Zo min mogelijk
 
 ---
 
 ### Syntax
 
-| 🔢 Matrix notatie     | 👙 Bra-ket notatie |
-|----------|-----|
-| Vector: $\begin{bmatrix}a\\c\end{bmatrix}$     | Bra: $\bra{0}$  |
-| Matrix: $\begin{bmatrix}a&b\\c&d\end{bmatrix}$     | Ket: $\ket{0}$  |
+| 🔢 Matrix notatie                              | 👙 Bra-ket notatie |
+|------------------------------------------------|--------------------|
+| Vector: $\begin{bmatrix}a\\c\end{bmatrix}$     | Bra: $\bra{0}$     |
+| Matrix: $\begin{bmatrix}a&b\\c&d\end{bmatrix}$ | Ket: $\ket{0}$     |
 
 - State/toestand typisch $\ket\phi$ of $\ket\psi$. 
 - Operator typisch hoofdletters: $A$, $B$, etc. 
@@ -88,8 +88,8 @@ section ul li[data-bespoke-marp-fragment=inactive] ul li[data-bespoke-marp-fragm
 ### Vectors
 
 * $\begin{bmatrix}a\\b\end{bmatrix}=a\begin{bmatrix}1\\0\end{bmatrix}+b\begin{bmatrix}0\\1\end{bmatrix}$, dus
-    * met kans $a^2$ nul, en 
-    * met kans $b^2$ één
+    * met kans $|a|^2$ nul, en 
+    * met kans $|b|^2$ één
 * Superpositie als $a\neq 0$ en $b\neq 0$. 
 * Elke toestand is te omschrijven zo. 
 * Er zijn andere <em>bases</em> mogelijk... (later meer)
@@ -211,11 +211,99 @@ $$(a\ket{0}+b\ket{1})\otimes(c\ket{0}+d\ket{1})=ac\ket{00}+bc\ket{10}+ad\ket{01}
 
 ## Vandaag
 
-* ~~🔒 Quantum key distribution~~
 * ~~🔢 Wiskundig formalisme~~
-* 📋 Quantum circuits
+* 🔒 Quantum key distribution
+* ⏛ Quantum circuits
 * 🔍 Grover
-* 👨‍💻 Oefening
+* 🏋️ Oefening
+* 👥 Gezamelijke wrap-up
+
+---
+
+## 🔒 Quantum key distribution
+(Wij doen BB84, er bestaat ook E91)
+
+---
+
+### Algoritme: quantum + klassiek
+<style scoped>
+     table {
+  border: 1px solid white;
+  font-size: smaller;
+  }
+
+  td, th {
+    padding: 4pt;
+    margin: 0;
+  border: 1px solid white;
+  }
+    </style>
+
+* Quantum, twee bases: 
+
+| Meet   | ↙️↗️   | ↙️↗️   | ↙️↗️      | ↙️↗️      | ↙️↗️           | ⬆️⬇️   | ⬆️⬇️   | ⬆️⬇️   | ⬆️⬇️   |
+|----------------|------|------|---------|---------|------|------|------|------|------|
+| Begin | ↗️    | ↙️    | ⬆️       | ⬇️       | ↙️             | ↗️    | ↙️    | ⬆️    | ⬇️    |
+| Eind  | ↗️    | ↙️    | ↙️❓↗️  | ↙️❓↗️  | ↙️                     | ⬆️❓⬇️   | ⬆️❓⬇️   | ⬆️    | ⬇️    |
+
+* Klassiek, een slim <em>protocol</em>.
+
+---
+
+### Het quantum deel
+* De toestand $\alpha\ket{0}+\beta\ket{1}$ meten in de 0/1 basis: 
+    * Met kans $|\alpha|^2$ krijgen we $\ket{0}$
+    * Met kans $|\beta|^2$ krijgen we $\ket{1}$
+* De toestand $\alpha\ket{0}+\beta\ket{1}$ meten in de +/- basis: 
+    * Eerst herschrijven: 
+    $\alpha\ket{0}+\beta\ket{1}=(\alpha+\beta)(\ket{0}+\ket{1})+(\alpha-\beta)(\ket{0}-\ket{1})$
+    $=(\alpha+\beta)\ket{+}+(\alpha-\beta)\ket{-}$
+        * 🤫 stiekem was dat de Hadamard
+    * Met kans $|\alpha+\beta|^2$ krijgen we $\ket{+}$
+    * Met kans $|\alpha-\beta|^2$ krijgen we $\ket{-}$
+
+---
+
+### Het klassieke deel: privacy check
+
+* 🔒 meet verstrengelde qubits in willekeurige bases
+* 🔓 vertel bases klassiek: gelijke bases moeten dezelfde meetresultaten geven
+
+| 👧      | 👧  || 👦      | 👦
+|----------|--------|-|----------|--------
+| basis    | meting || meting    | basis
+| ↙️↗️       | ↗️      || ⬇️        | ⬆️⬇️      
+| ⬆️⬇️       | ⬇️      || ⬇️       | ⬆️⬇️      
+| ↙️↗️       | ↙️      || ↙️       | ↙️↗️      
+
+
+---
+
+### Het klassieke deel: sleutel maken
+
+* 🎲 Doe metingen in willekeurige bases
+* 🗑️ Gooi de metingen weg met verschillende bases
+* ☑ Kies een aantal metingen als check
+    * 🔑 De rest is de geheime sleutel
+
+---
+
+### 🏋️ Oefenen
+
+* Wat gebeurt er als 🕵️ afluistert?
+* Maakt de volgorde waarin 👧 en 👦 meten uit?
+* Met welke kans wordt 🕵️ betrapt?
+* De toestand $\ket{0}-\ket{1}$ wordt gemeten in de +i/-i basis. Wat zijn de kansen?
+
+---
+
+## Vandaag
+
+* ~~🔢 Wiskundig formalisme~~
+* ~~🔒 Quantum key distribution~~
+* ⏛ Quantum circuits
+* 🔍 Grover
+* 🏋️ Oefening
 * 👥 Gezamelijke wrap-up
 
 ---
@@ -262,7 +350,7 @@ $$(a\ket{0}+b\ket{1})\otimes(c\ket{0}+d\ket{1})=ac\ket{00}+bc\ket{10}+ad\ket{01}
 ### 🏋️ Oefenen
 
 * 🔁 Herhaling: is het teleportatie circuit duidelijk?
-* Kan je met alleen CNOTS een SWAP maken?
+* Kan je met alleen CNOTS een SWAP 🔀 maken?
 * Als er een qubit bij komt in een circuit, hoeveel groter worden de matrices?
 * Maak een circuit die meet of een qubit paar $\ket{00}+\ket{11}$ is, of $\ket{01}+\ket{10}$. 
 * Gebruik de CNOT om de CPHASE te maken. 
@@ -271,11 +359,11 @@ $$(a\ket{0}+b\ket{1})\otimes(c\ket{0}+d\ket{1})=ac\ket{00}+bc\ket{10}+ad\ket{01}
 
 ## Vandaag
 
-* ~~🔒 Quantum key distribution~~
 * ~~🔢 Wiskundig formalisme~~
-* ~~📋 Quantum circuits~~
+* ~~🔒 Quantum key distribution~~
+* ~~⏛ Quantum circuits~~
 * 🔍 Grover
-* 👨‍💻 Oefening
+* 🏋️ Oefening
 * 👥 Gezamelijke wrap-up
 
 ---
@@ -326,11 +414,11 @@ Op het white-board 👨‍🏫
 
 ## Vandaag
 
-* ~~🔒 Quantum key distribution~~
 * ~~🔢 Wiskundig formalisme~~
-* ~~📋 Quantum circuits~~
+* ~~🔒 Quantum key distribution~~
+* ~~⏛ Quantum circuits~~
 * ~~🔍 Grover~~
-* 👨‍💻 Oefening
+* 🏋️ Oefening
 * 👥 Gezamelijke wrap-up
 
 ---
