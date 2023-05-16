@@ -74,14 +74,14 @@ section ul li[data-bespoke-marp-fragment=inactive] ul li[data-bespoke-marp-fragm
 
 ### Syntax
 
-- State/toestand typisch $\ket\phi$ of $\ket\psi$. 
-- Operator typisch hoofdletters: $A$, $B$, etc. 
-- Coëfficiënten typisch Grieks of klein: $\alpha$, $a$, $\beta$, $b$ etc. 
-
 | 🔢 Matrix notatie                              | 👙 Bra-ket notatie |
 |------------------------------------------------|--------------------|
 | Vector: $\begin{bmatrix}a\\c\end{bmatrix}$     | Bra: $\bra{0}$     |
 | Matrix: $\begin{bmatrix}a&b\\c&d\end{bmatrix}$ | Ket: $\ket{0}$     |
+
+* State/toestand typisch $\ket\phi$ of $\ket\psi$. 
+* Operator typisch hoofdletters: $A$, $B$, etc. 
+* Coëfficiënten typisch Grieks of klein: $\alpha$, $a$, $\beta$, $b$ etc. 
 
 ---
 
@@ -99,9 +99,9 @@ section ul li[data-bespoke-marp-fragment=inactive] ul li[data-bespoke-marp-fragm
 
 ### Complexe getallen
 Alles wat je moet weten:
-* definitie $i^2=-1$
-* absolute waarde: $|i|=1$
-* je kunt er gewoon mee rekenen
+* Definitie: $i^2=-1$
+* Absolute waarde: $|i|=1$
+* Je kunt er gewoon mee rekenen. 
 
 ---
 
@@ -156,9 +156,9 @@ img {
 * $\star$ Toestanden hebben norm 1
 * Matrices: 
     * moeten $\star$ bewaren, dus zijn <em>unitair</em>, oftewel zijn rotaties, dus
-    * zijn inverteerbaar
-        * in de quantum computing heet dat <em>reversibel</em>
-        * hier volgt de <em>no cloning theorem</em> uit
+    * zijn inverteerbaar. 
+        * In de quantum computing heet dat <em>reversibel</em>. 
+        * Hier volgt de <em>no cloning theorem</em> uit. 
 
 ---
 
@@ -169,7 +169,7 @@ img {
     * Matrix keer matrix $AB$
         * Matrix inverse $A^{-1}$ (moeilijk, niet proberen)
     * Getal keer matrix $\alpha B$
-* Tensorvermenigvuldigen $A\otimes B$, straks...
+* Tensorvermenigvuldigen $A\otimes B$, ...
 
 ---
 
