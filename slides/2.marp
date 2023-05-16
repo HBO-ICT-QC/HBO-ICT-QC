@@ -74,14 +74,14 @@ section ul li[data-bespoke-marp-fragment=inactive] ul li[data-bespoke-marp-fragm
 
 ### Syntax
 
+- State/toestand typisch $\ket\phi$ of $\ket\psi$. 
+- Operator typisch hoofdletters: $A$, $B$, etc. 
+- Coëfficiënten typisch Grieks of klein: $\alpha$, $a$, $\beta$, $b$ etc. 
+
 | 🔢 Matrix notatie                              | 👙 Bra-ket notatie |
 |------------------------------------------------|--------------------|
 | Vector: $\begin{bmatrix}a\\c\end{bmatrix}$     | Bra: $\bra{0}$     |
 | Matrix: $\begin{bmatrix}a&b\\c&d\end{bmatrix}$ | Ket: $\ket{0}$     |
-
-- State/toestand typisch $\ket\phi$ of $\ket\psi$. 
-- Operator typisch hoofdletters: $A$, $B$, etc. 
-- Coëfficiënten typisch Grieks of klein: $\alpha$, $a$, $\beta$, $b$ etc. 
 
 ---
 
