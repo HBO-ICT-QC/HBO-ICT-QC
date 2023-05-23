@@ -21,4 +21,10 @@ jobs:
           args: --html slides/2.marp -o slides/2.html
         env:
           MARP_USER: root:root
+      - name: Marp Build 4
+        uses: docker://marpteam/marp-cli:v1.7.0
+        with:
+          args: --html slides/4.marp -o slides/4.html
+        env:
+          MARP_USER: root:root
       - uses: stefanzweifel/git-auto-commit-action@v4
