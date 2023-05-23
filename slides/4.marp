@@ -1,0 +1,417 @@
+---
+marp: true
+theme: uncover
+style: |
+  .columns {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: center;
+    gap: 1rem;
+  }
+math: mathjax
+---
+<!-- class: invert -->
+<style>
+section ul li[data-bespoke-marp-fragment=inactive] {
+    visibility: visible;
+    opacity: .1;
+}
+section ul li[data-bespoke-marp-fragment=active] ul li[data-bespoke-marp-fragment=active] {
+    visibility: visible;
+    opacity: 1;
+}
+section ul li[data-bespoke-marp-fragment=active] ul li[data-bespoke-marp-fragment=inactive] {
+    visibility: visible;
+    opacity: .1;
+}
+section ul li[data-bespoke-marp-fragment=inactive] ul li[data-bespoke-marp-fragment=inactive] {
+    visibility: visible;
+    opacity: 1;
+}
+</style>
+# Les 3
+
+---
+
+## Overzicht bijeenkomsten
+* ~~Les 1: 🤝 Introductie~~
+* ~~🏖️ Roostervrije week~~
+* ~~Les 2: 🔢 Wiskunde/Natuurkunde (en gastles TNO)~~
+* ~~Les 3: 📝 Quantum Computing~~
+* Les 4: 👨‍💻 Quantum Algoritmen
+* Les 5: 👩‍🏫 Project presentaties
+
+---
+
+## Vandaag
+
+* 🔁 herhaling: quantum teleportatie
+* 🔁 herhaling: quantum key distribution
+* 🔁 herhaling: Grover's algoritme
+* Deutsch-Jozsa algoritme
+* Simon's algoritme
+* Shor's algoritme
+* Quantum neurale netwerken
+* Quantum error correction
+* 🏋️‍♂️ Oefening
+
+---
+
+## Quantum simulator opdracht
+
+👀 Gelukt? 👀
+
+---
+
+## Deutsch-Jozsa algoritme
+
+* 💪 Het eerste bewijs van een quantum-voordeel. 
+  * Shor's algoritme is dat nog niet 100% zeker. 
+* Heeft (nog) niet veel toepassingen. 
+* Probleem: 
+  * Situatie: $f$ mapt $n$ bits naar 1 bit en is
+    * Gebalanceerd (even vaak 0 als 1), of
+    * Constant (altijd 0 of altijd 1)
+  * Vraag: is $f$ gebalanceerd of constant?
+
+---
+
+### Voorbeeld gebalanceerde functie ⚖️
+
+ Input-bit 1  | Input-bit 2   | Output-bit   
+-------|------|------
+0|0|0
+0|1|1
+1|0|1
+1|1|0
+
+---
+
+### Het probleem
+
+ Input-bit 1  | Input-bit 2   | Output-bit   
+-------|------|------
+0|0|❓
+0|1|❓
+1|0|❓
+1|1|❓  
+
+---
+
+### Oplossing klassiek 🏛️
+```java
+public static int n = 9;
+public static boolean f(boolean input[]) { return input[0]; }
+public static boolean isConstant() {
+  boolean eerste = true;
+  boolean vorige = false;
+  boolean[] booleans = new boolean[] { false, true };
+  for (boolean i1: booleans)
+    for (boolean i2: booleans)
+             ⋮      ⋮      ⋮
+        for (boolean i9: booleans) {
+          boolean waarde = f(new boolean[] { i1, i2, ⋯, i9 });
+          if (eerste) eerste = false;
+          else if (waarde != vorige) return false;
+          vorige = waarde;
+        }
+  return true;
+}
+```
+
+---
+
+### Oplossing klassiek 🏛️: performance ⏱️
+* worst-case $\mathcal{O}(2^{n-1}+1)$
+  * 👎 een "heleboel keren" $f$ aanroepen
+* kans dat $f$ constant is: $1-\frac{1}{2^{k-1}}$
+
+---
+
+### De oplossing quantum
+* ⏱️ efficiëntie: 1 aanroep van $f$
+* is het resultaat helemaal $0$ dan $f$ constant
+  * anders is $f$ gebalanceerd
+
+![width:800](./dj.png)
+
+---
+
+### De oplossing quantum: de check
+* Na $H^{\otimes n}$: $\frac{1}{\sqrt{2^{n+1}}}\sum_{x=0}^{2^n-1} |x\rangle (|0\rangle - |1\rangle )$
+* Na Oracle: $\frac{1}{\sqrt{2^{n+1}}}\sum_{x=0}^{2^n-1} |x\rangle (|0\oplus f(x)\rangle - |1\oplus f(x)\rangle )$
+* Oftewel: $\frac{1}{\sqrt{2^{n+1}}}\sum_{x=0}^{2^n-1} (-1)^{f(x)} |x\rangle (|0\rangle - |1\rangle )$.
+* Discard garbage: $\frac{1}{\sqrt{2^{n}}}\sum_{x=0}^{2^n-1} (-1)^{f(x)} |x\rangle$.
+* $H^{\otimes n} |k\rangle = \frac{1}{\sqrt{2^n}} \sum_{j = 0}^{2^n - 1} (-1)^{k \cdot j} |j\rangle$
+* Na $H^{\otimes n}$: $\frac{1}{\sqrt{2^n}}\sum_{x=0}^{2^n-1}(-1)^{f(x)} \left[ \frac{1}{\sqrt{2^n}} \sum_{y=0}^{2^n-1}(-1)^{x\cdot y}  |y\rangle \right]$
+* Oftewel: $\sum_{y=0}^{2^n-1} \left[ \frac{1}{2^n} \sum_{x=0}^{2^n-1}(-1)^{f(x)} (-1)^{x\cdot y}\right] |y\rangle$
+* Voor $y=0$ staat er $\left|\frac{1}{2^n} \sum_{x=0}^{2^n-1}(-1)^{f(x)}\right|^2$
+
+---
+
+### De oplossing quantum: interferentie
+
+* Kans op $\ket{0}^{\otimes n}$ is $\left|\frac{1}{2^n} \sum_{x=0}^{2^n-1}(-1)^{f(x)}\right|^2$
+* Als $f$ constant, dan *constructieve interferentie*. 
+* Als *f* gebalanceerd, dan *destructieve interferentie*. 
+* Als $\ket{0}^{\otimes n}$ gemeten, dan (en alléén dan) is $f$ constant. 
+
+---
+
+## Vandaag
+
+* ~~🔁 herhaling: quantum teleportatie~~
+* ~~🔁 herhaling: quantum key distribution~~
+* ~~🔁 herhaling: Grover's algoritme~~
+* ~~Deutsch-Jozsa algoritme~~
+* Simon's algoritme
+* Shor's algoritme
+* Quantum neurale netwerken
+* Quantum error correction
+* 🏋️‍♂️ Oefening
+
+---
+
+### Simon's algoritme
+* Geen hogere wiskunde, wel flink puzzelen
+* Probleem:
+  * Situatie: er is een geheime $n$ bit string $s$ zodat: $f(x)=f(y)$ als en alleen als $x\oplus y=s$. 
+  * Vraag: wat is $s$?
+
+---
+
+### Simon's algoritme: voorbeeld
+
+x | f(x)
+--|------
+000	| 101
+001	| 010
+010	| 000
+011	| 110
+100	| 000
+101	| 110
+110	| 101
+111	| 010
+
+---
+
+### Simon's algoritme: klassiek
+
+* zoek twee dezelfde uitkomsten
+* ongeveer $\sqrt{2^n}$ keer uitproberen
+  * dit is het [verjaardagenparadox](https://en.wikipedia.org/wiki/Birthday_problem) (belangrijk bij [hashen](https://justcryptography.com/the-birthday-paradox/))
+
+---
+
+### Simon's algoritme: quantum
+
+Twee stappen: 
+1) ongeveer $\mathcal{O}(n)$ keer een quantum circuit, met één $f$
+2) klassiek: gaussian elimination
+
+---
+
+## Vandaag
+
+* ~~🔁 herhaling: quantum teleportatie~~
+* ~~🔁 herhaling: quantum key distribution~~
+* ~~🔁 herhaling: Grover's algoritme~~
+* ~~Deutsch-Jozsa algoritme~~
+* ~~Simon's algoritme~~
+* Shor's algoritme
+* Quantum neurale netwerken
+* Quantum error correction
+* 🏋️‍♂️ Oefening
+---
+
+### Shor's algoritme
+
+* RSA breken
+  * (voor AES hebben we met Grover $\sqrt{}$ winst)
+* Algoritme bestaat uit twee stukken
+  * Klassiek: Slimme truuk
+  * Quantum: Fourier transform
+
+---
+
+### RSA
+
+* Private sleutel: twee priemgetallen $p$ en $q$.
+* Publieke sleutel: het product $pq=n$ en een $m$ zodanig dat $\gcd{((p-1)(q-1),m)}=1$.
+* Bob versleutelt $d$ door $e=d^m\bmod n$.
+* Alice kan makkelijk $d$ terugvinden. 
+* We breken RSA door priemfactorisatie slim te doen. 
+
+---
+
+### Priemfactorisatie ➡️ periode zoeken
+
+* Kies een getal $a$ kleiner dan $n$
+* Bepaal $r$ zodanig dat $a^r=kn+1$ (quantum!)
+* Herstart als $r$ oneven is (kleine kans)
+* Rekenen om $p$ en $q$ te vinden: 
+  * $a^r-1=kqp$
+  * $(a^{r/2}-1)(a^{r/2}+1)=kqp$
+  * $p$ deelt $a^{r/2}-1$ en $q$ deelt $a^{r/2}+1$
+  * $p=\gcd{(a^{r/2}-1,n)}$ en $q=\gcd{(a^{r/2}+1,n)}$
+
+---
+
+### Shor: het quantum deel
+
+* Maak (alweer) een mega-superpositie
+* Voer de quantum Fourier Transform uit
+  * Destructieve en constructieve interferentie zorgen dat de periode over blijft. 
+* Meet
+
+---
+
+### Fourier transformatie: toepassing
+
+* `.BMP` vs. `.JPEG`, `.WAV` vs `.MP3`
+* Welke informatie kunnen we weglaten?
+  * Een hap uit een foto? Niet handig...
+* Bekijk een foto niet als 
+  * stukjes *naast elkaar*: ![height:1em](./fourier1.svg)
+  * maar als stukjes *over elkaar heen*: ![height:1em](./fourier2.svg)
+* [2-dimensionaal](https://www.dspguide.com/graphics/F_27_10.gif) is ingewikkeld...
+
+---
+
+### Fourier transformatie: intuïtie
+
+![height:100%](./fourier2d.png)
+
+---
+
+### Fourier transformatie: meer intuïtie
+
+Bekijk [Youtube](https://www.youtube.com/watch?v=mgXSevZmjPc). 
+
+---
+
+### Complexe getallen
+
+* Twee representaties: 
+  * $x+yi$
+  * $r e^{i\phi}$ met radius $r$ en hoek $\phi$ in radialen
+    * $\phi$ zit tussen $0$ en $2\pi$
+* Rekenregels: 
+  * $x+yi$
+    * Optellen en aftrekken eenvoudig
+    * Bij vermenigvuldigen, onthoud $i^2=-1$
+  * $r e^{i\phi}$
+    * Vermenigvuldigen eenvoudig
+    * Optellen en aftrekken ingewikkeld
+
+---
+
+### Discrete Fourier transformatie
+
+$$\sum\limits_{n=0}^{N-1}x_n\ket{n}\mapsto\sum\limits_{n=0}^{N-1}\left(\frac{1}{\sqrt{N}}\sum\limits_{m=0}^{N-1}x_m e^{2\pi\frac{nm}{N}}\right)\ket{n}$$
+
+Erg ingewikkeld, maar een paar dingen te zien: 
+* Linear en inverteerbaar, dus quantum operatie kan
+* Er worden een heleboel complexe getallen opgeteld. Is er mogelijk constructieve interferentie?
+
+---
+
+## Vandaag
+
+* ~~🔁 herhaling: quantum teleportatie~~
+* ~~🔁 herhaling: quantum key distribution~~
+* ~~🔁 herhaling: Grover's algoritme~~
+* ~~Deutsch-Jozsa algoritme~~
+* ~~Simon's algoritme~~
+* ~~Shor's algoritme~~
+* Quantum neurale netwerken
+* Quantum error correction
+
+---
+
+## Quantum Machine Learning Algoritmen
+
+* Allerlei toepassingen in *Machine Learning*
+* 🧠 *Neurale netwerken*: 
+  * Om efficiënt coëfficiënten te berekenen
+  * Om meer vrijheden te introduceren
+
+---
+
+## Vandaag
+
+* ~~🔁 herhaling: quantum teleportatie~~
+* ~~🔁 herhaling: quantum key distribution~~
+* ~~🔁 herhaling: Grover's algoritme~~
+* ~~Deutsch-Jozsa algoritme~~
+* ~~Simon's algoritme~~
+* ~~Shor's algoritme~~
+* ~~Quantum neurale netwerken~~
+* Quantum error correction
+
+---
+
+## Quantum Error Correction
+
+* Er is veel *noise*
+* Logische qubits opslaan in meerdere fysieke qubits
+* Klassieke error correction wordt gebruikt in internet verkeer, CPU's, compressie, etc.
+
+---
+
+### Klassieke Error Correction
+
+* een $[n,k]$ code encodes $k$ bits in $n$ bits
+* $n\times k$ *generator matrix* $G$ mapt van $x$ naar $y$: $y=Gx$
+* voorbeeld: repetition $[3,1]$ code $G=\left[\begin{smallmatrix}1\\1\\1\end{smallmatrix}\right]$
+* *parity check matrix*: $n-k=2$ vectors orthogonaal op $G^T$. Voorbeeld: $H=\left[\begin{smallmatrix}1&1&0\\0&1&1\end{smallmatrix}\right]$
+* als $Hx=0$, dan $x=\left[\begin{smallmatrix}1\\1\\1\end{smallmatrix}\right]$ of $x=\left[\begin{smallmatrix}0\\0\\0\end{smallmatrix}\right]$
+* wat gebeurt er bij een error? $y'=y+e$
+* gebruik *error syndromes* $He$ om fout te detecteren
+* *Hamming distance*
+
+---
+
+### QEC
+
+bitflip: 
+
+![width:700](./bitflip.svg)
+
+phaseflip:
+
+![width:700](./phaseflip.svg)
+
+---
+
+### QEC: Shor code
+
+![width:700](./Shore_code.svg)
+
+---
+
+## 🏋️ Oefening
+* In groepjes van drie:
+  * Kies een quantum algoritme uit
+  * Bereid een presentatie voor
+  * Bespreek: 
+    * Toepassingen
+    * Implementatie problemen
+    * Klassieke alternatieven
+* Aan het eind van elke presentatie zijn er vragen. 
+
+---
+
+## Gezamelijke wrap-up
+* Wat hebben we geleerd?
+* Vragen bespreken
+* Wat staat ons te wachten?
+
+---
+
+<!--
+color: black
+-->
+### Volgende week: TNO opdracht
+
+![bg grayscale:1 blur:20px](https://cdn2.psychologytoday.com/assets/styles/manual_crop_1_91_1_1528x800/public/2020-08/shutterstock_1731284125_0.jpg?itok=89UrdUt_)
