@@ -11,5 +11,5 @@ Bekijk de slides van de lessen opnieuw:
 - Gastcollege TNO: [Les 2](./slides/2a.pdf) en [meer](./slides/2b.pdf)
 - [Les 3](./slides/2.html)
 - [Les 4](./slides/4.html)
-- Projecten TNO
+- [Projecten TNO](./Projecten.md)
 - Eindpresentaties
