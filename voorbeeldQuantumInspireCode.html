@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Code runnen op Quantum Inspire</title>
+</head>
+<body>
+  <ul>
+    <li>Pas <code>...email...</code> in de code onderaan aan naar jouw email</li>
+    <li>Pas <code>...password...</code> in de code onderaan aan naar jouw wachtwoord</li>
+    <li>Refresh de webpage</li>
+    <li>Open de developer tools</li>
+    <li>Ga naar <code>Console</code></li>
+    <li>Het resultaat staat helemaal onderaan: elk getal in de lijst is een uitkomst (0, 2, 0, 2) betekent bijvoorbeeld dat de quantum computer 4 keer de code heeft gerund, en dat de helft van de keren 00 de uitkomst was, en de helft van de keren 10 (lees 2 binair). </li>
+  </ul>
+  <script>
+    async function execute(email, password, code, shots) {
+      const URL = 'https://api.quantum-inspire.com/';
+      const call = async (url, data) => {
+        const response = await fetch(URL + url, {
+          headers: {
+              Authorization: `Basic ${btoa(`${email}:${password}`)}`,
+              ...(data === undefined ? undefined : {
+                  "Content-Type": "application/json"
+              }),
+          },
+          ...(data === undefined ? undefined : {
+              body: JSON.stringify(data)
+          }),
+          method: data === undefined ? "GET" : "POST"
+        });
+        if (response.status==401) throw new Error("Wrong email or password!");
+        if (!response.ok) throw new Error();
+        return await (response.json());
+      }
+      const projectCreationResponse = await call("projects/", {
+          name: "generatedProject",
+          backend_type: "https://api.quantum-inspire.com/backendtypes/1/",
+          default_number_of_shots: shots
+      });
+      const projectUrl = projectCreationResponse.url;
+      console.log(`A project was created at: ${projectUrl}`);
+      const assetCreationResponse = await call("assets/", {
+          name: "generatedAsset",
+          project: projectUrl,
+          contentType: "text/plain",
+          content: code
+      });
+      const assetUrl = assetCreationResponse.url;
+      console.log(`An asset was created at: ${assetUrl}`);
+      const jobCreationResponse = await call("jobs/", {
+          name: "generatedJob",
+          input: assetUrl,
+          backend_type: "https://api.quantum-inspire.com/backendtypes/1/",
+          number_of_shots: shots
+      });
+      const jobId = jobCreationResponse.id;
+      console.log(`A job was created with id: ${jobId}`);
+      console.log(`We now wait for completion...`);
+      let status = "WAITING";
+      while (status != "COMPLETE") {
+          await new Promise(res => setTimeout(res, 1000));
+          const jobReadResponse = await call(`jobs/${jobId}/`);
+          status = jobReadResponse.status;
+          console.log(`Current status: ${status}`);
+      }
+      const resultResponse = await call(`jobs/${jobId}/result/`);
+      console.log(`Retrieving data at: ${resultResponse.raw_data_url}`);
+      return await call(`${resultResponse.raw_data_url.substring(URL.length)}?format=json`);
+  };
+  
+  (async () => console.log(await execute(
+      '...email...', 
+      '...password...', 
+      'version 1.0\nqubits 2\nprep_z q[0]\nprep_z q[1]\nH q[0]\nCNOT q[0],q[1]\nmeasure q[0]\nmeasure q[1]',
+      10
+  )))();
+  </script>
+</body>
+</html>
