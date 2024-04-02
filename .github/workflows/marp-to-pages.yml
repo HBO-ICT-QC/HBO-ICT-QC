@@ -10,19 +10,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Marp Build 1
-        uses: docker://marpteam/marp-cli:v1.7.0
+        uses: docker://marpteam/marp-cli:latest
         with:
           args: --html slides/1.marp -o slides/1.html
         env:
           MARP_USER: root:root
       - name: Marp Build 2
-        uses: docker://marpteam/marp-cli:v1.7.0
+        uses: docker://marpteam/marp-cli:latest
         with:
           args: --html slides/2.marp -o slides/2.html
         env:
           MARP_USER: root:root
       - name: Marp Build 4
-        uses: docker://marpteam/marp-cli:v1.7.0
+        uses: docker://marpteam/marp-cli:latest
         with:
           args: --html slides/4.marp -o slides/4.html
         env:
